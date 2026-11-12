@@ -13,4 +13,12 @@ public record Grid(int width, int height, HashMap<Position, Obstacle> obstacles,
 	public void addRobot(Robot robot, Position position) {
 		robots.put(position, robot);
 	}
+	
+	public boolean isAnyObstacleHere(Position position) {
+		return obstacles.containsKey(position);
+	}
+	
+	public boolean isAnyRobotsHere(Position position) {
+		return robots.containsKey(position);
+	}
 }

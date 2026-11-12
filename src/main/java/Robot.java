@@ -1,35 +1,42 @@
 
 public class Robot {
 	private char direction;
-	private int x;
-	private int y;
+	private Sensor sensor;
+	private Position position;
+	private Grid grid;
 	
-	public Robot(char direction) {
+	public Robot(char direction, Position position) {
 		this.direction = direction;
+		this.position = position;
+		this.sensor = new Sensor();
+	}
+	
+	public void setGrid(Grid grid) {
+		this.grid = grid;
 	}
 	
 	public void forward() {
 		if (direction == 'N') {
-			this.y += 1;
+			this.position.setY(this.position.y() +1);
 		} else if (direction == 'S') {
-			this.y -= 1;
+			this.position.setY(this.position.y() -1);
 		} else if (direction == 'E') {
-			this.x -= 1;
+			this.position.setX(this.position.x() +1);
 		} else if (direction == 'W') {
-			this.x += 1;
+			this.position.setX(this.position.x() -1);
 		}
 		
 	}
 	
 	public void backward() {
 		if (direction == 'N') {
-			this.y -= 1;
+			this.position.setY(this.position.y() -1);
 		} else if (direction == 'S') {
-			this.y += 1;
+			this.position.setY(this.position.y() +1);
 		} else if (direction == 'E') {
-			this.x += 1;
+			this.position.setX(this.position.x() -1);
 		} else if (direction == 'W') {
-			this.x -= 1;
+			this.position.setX(this.position.x() +1);
 		}
 	}
 	
@@ -55,6 +62,12 @@ public class Robot {
 		} else if (direction == 'W') {
 			direction = 'N';
 		}
+	}
+	
+	@Override
+	public String toString() {
+		
+		return "Robot facing " + direction + " at " + position;
 	}
 	
 //	public void updateDirection() {
