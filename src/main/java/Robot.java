@@ -1,14 +1,12 @@
 
 public class Robot {
 	private char direction;
-	private Sensor sensor;
 	private Position position;
 	private Grid grid;
 	
 	public Robot(char direction, Position position) {
 		this.direction = direction;
 		this.position = position;
-		this.sensor = new Sensor();
 	}
 	
 	public void setGrid(Grid grid) {
